@@ -26,6 +26,30 @@ Once you have this downloaded, you will pair up this file with a software called
 
 VMware is a company best known for virtualization and cloud computing software. Essentially, using a product like `VMware Workstation Player` allows you to emulate a computer within the current computer you use, this is what is known as a virtual machine. A virtual machine generally interacts with the host computer hardware while being isolated from the software and host operating system. It is a good practice within the cybersecurity industry to use virtual machines for many different areas of work such as organization, security, and making the most of offensive/defensive tools.
 
-If you do not have VMware Workstation Player installed yet, you can do so [here](https://www.vmware.com/go/getplayer-win). (Assuming you are using Windows as your host operating system)
+If you do not have VMware Workstation Player installed yet, you can do so [here](https://www.vmware.com/go/getplayer-win). <br>(Assuming you are using Windows as your host operating system)
 
-Once you install this software, open it up and 
+Once you install and open this software you should be presented with this:
+<br>
+<br>
+<img width="600" alt="image" src="https://github.com/ZoneMix/CSC134/assets/38586893/934ca2b5-4740-4584-9e16-cb54e8131638">
+
+Click on `Open a Virtual Machine` and navigate to `Documents -> Virtual Machines`. Inside of the folder you unzipped, double-click on the file that looks like this:<br>
+<img width="600" alt="image" src="https://github.com/ZoneMix/CSC134/assets/38586893/b9aa4da3-ae8c-478d-af97-0df42d05aeb3">
+
+It then should appear in the main window:<br>
+<img width="600" alt="image" src="https://github.com/ZoneMix/CSC134/assets/38586893/8d1f44ad-2a0d-4393-b998-58942427648b">
+
+To run Kali, click on `Play virtual machine` and this should pop up:<br>
+<img width="600" alt="image" src="https://github.com/ZoneMix/CSC134/assets/38586893/9e6e048e-a583-461d-a6a2-911f2af3454f">
+
+The default credentials for the Kali machine are `kali:kali`
+
+**NOTE: Kali will take control of your cursor if you do not click outside the window of Kali, you can use CTRL+ALT to gain cursor control back**
+
+### Setting up Kali
+
+After entering credentials you will open up to this environment:<br>
+<img width="600" alt="image" src="https://github.com/ZoneMix/CSC134/assets/38586893/ae3c9387-4bc3-4984-beb2-71192d1e386d">
+
+Click on the icon with a black box, which is called the `Terminal`:<br>
+<img width="100" alt="image" src="https://github.com/ZoneMix/CSC134/assets/38586893/2161dd20-3273-4c7a-9ac4-1aa40bb3852e">
