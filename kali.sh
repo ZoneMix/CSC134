@@ -31,7 +31,6 @@ fi
 docker pull tleemcjr/metasploitable2 >/dev/null 2>&1
 docker pull raesene/bwapp >/dev/null 2>&1
 docker pull bkimminich/juice-shop >/dev/null 2>&1
-docker pull byt3bl33d3r/crackmapexec >/dev/null 2>&1
 
 # Adding aliases
 alias -g msf-run='docker run -it tleemcjr/metasploitable2:latest sh -c "/bin/services.sh && bash"'
@@ -54,9 +53,6 @@ rm -f /tmp/atom-amd64.deb
 
 # Fix some dependencies
 apt --fix-broken install
-
-# Install terminator
-apt install -y terminator
 
 # Install ffuf
 apt install -y ffuf
@@ -113,7 +109,6 @@ make
 
 # Install scantool of obd2
 apt install -y scantool
-
 
 # Canopy install
 git clone https://github.com/Tbruno25/canopy /opt/canopy
