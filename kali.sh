@@ -7,10 +7,8 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 export DEBIAN_FRONTEND=noninteractive
-# Update and upgrade system
-apt -qq install ntp -y
-systemctl restart ntp.service
 
+# Update and upgrade system
 apt -qq update -y 
 apt -qq update -y --fix-missing
 apt -qq upgrade -y 
@@ -21,11 +19,8 @@ apt install -y docker-compose
 systemctl enable docker
 systemctl start docker
 
-if [[ -z $SUDO_USER ]]; then
-        echo "Script not ran with sudo. You may need to add your user to docker group manually"
-else
-        usermod -aG docker $SUDO_USER
-fi
+# Add user to docker group
+usermod -aG docker $SUDO_USER
 
 # Pulling a few containers
 docker pull tleemcjr/metasploitable2 >/dev/null 2>&1
@@ -54,9 +49,6 @@ rm -f /tmp/atom-amd64.deb
 # Fix some dependencies
 apt --fix-broken install
 
-# Install ffuf
-apt install -y ffuf
-
 # Install jq 
 apt install -y jq
 
@@ -78,62 +70,15 @@ sudo apt install -y python3-pip
 # Installing python pwntools
 pip install -y pwntools
 
-# Install openvmtools
-apt install -y open-vm-tools-desktop
-
 # Install Bettercap
 apt install -y libnetfilter-queue-dev libpcap-dev libusb-1.0-0-dev
 apt install -y bettercap 
 
-# Install impacket
-git clone https://github.com/SecureAuthCorp/impacket.git /opt/impacket
-pip3 install -r /opt/impacket/requirements.txt
-python3 ./setup.py install
-
 #Install Ghidra
-apt update --fix-missing -y -qq
-apt install -y openjdk-11-jdk
 apt install -y ghidra
-
-# Install car hacking tools
-# Install Dependencies
-apt install -y libsdl2-dev libsdl2-image-dev
-
-# Install canutils
-apt install -y can-utils
-
-# Install ICSim
-git clone https://github.com/zombieCraig/ICSim.git /opt/ICSim
-zsh /opt/ICSim/setup_vcan.sh
-make
 
 # Install scantool of obd2
 apt install -y scantool
-
-# Canopy install
-git clone https://github.com/Tbruno25/canopy /opt/canopy
-cd /opt/canopy
-pip3 install -r requirements.txt
-cd ~
-
-# Check if we're sudo or root
-if [[ -z $SUDO_USER ]]; then
-  cf_home="~"
-  cf_user="root"
-else
-  cf_home=$(getent passwd $SUDO_USER | cut -d: -f6)
-  cf_user=$SUDO_USER
-fi
-cf_path=$cf_home"/course_files"
-
-# Fix ssh on VM
-mkdir -p $cf_home/.ssh/
-echo "Host *" > $cf_home/.ssh/config
-echo "  IPQoS lowdelay throughput" >> $cf_home/.ssh/config
-
-# Set a few terminator preferences 
-install -D /dev/null $cf_home/.config/terminator/config
-printf "[global_config]\n  inactive_color_offset = 1.0\n[keybindings]\n[profiles]\n  [[default]]\n    cursor_color = \"#aaaaaa\"\n    foreground_color = \"#ffffff\"\n    scrollback_lines = 4000\n[layouts]\n  [[default]]\n    [[[child1]]]\n      parent = window0\n      type = Terminal\n    [[[window0]]]\n      parent = \"\"\n      type = Window\n[plugins]" > $cf_home/.config/terminator/config
 
 # Unzip rockyou
 gunzip /usr/share/wordlists/rockyou.txt.gz
@@ -159,4 +104,5 @@ rm -f ~/.zsh_history
 
 # Done
 chown -hR kali:kali $cf_home/.config
+timedatectl set-timezone US/Central
 reboot
