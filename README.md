@@ -53,3 +53,14 @@ After entering credentials you will open up to this environment:<br>
 
 Click on the icon with a black box, which is called the `Terminal`:<br>
 <img width="100" alt="image" src="https://github.com/ZoneMix/CSC134/assets/38586893/2161dd20-3273-4c7a-9ac4-1aa40bb3852e">
+
+Enter each of these commands seperately into the terminal: (when using sudo you will need the password set for the VM, in our case "kali")
+```bash
+sudo apt update
+sudo apt install git -y
+cd ~
+git clone https://github.com/ZoneMix/CSC134.git
+cd CSC134
+```
+
+Once the github repository is finished cloning we will need run the install script which will take a while...
