@@ -66,6 +66,12 @@ cd CSC134
 Once the github repository is finished cloning we will need run the install script which will take a while...
 
 ```bash
-chmod u+x ./install.sh
-sudo ./install.sh
+chmod u+x ./kali.sh
+sudo ./kali.sh
 ```
+
+## Errors and Troubleshooting
+
+If you get an error that your virtual machine is not able to start, and that you need to change a setting in BIOS, it is likely that virtualization within your hardware settings is disabled and you will need to enable that. The best way to go about this is googling the make of your computer and looking up "enable virtualization in BIOS on" then the make of your computer.
+
+If you get error about not having internet within Kali, you will need to go into the settings of VMware Player under `Player -> Manage -> Virtual Machine Settings -> Network Adapter` then make sure it is set to `NAT` 
