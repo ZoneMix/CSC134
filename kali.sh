@@ -65,7 +65,7 @@ git clone https://github.com/cddmp/enum4linux-ng.git /opt/enum4linux-ng
 wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
 
 # Installing pip (python3 only)
-sudo apt install -y python3-pip
+apt install -y python3-pip
 
 # Installing python pwntools
 pip install -y pwntools
