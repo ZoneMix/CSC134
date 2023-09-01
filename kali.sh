@@ -11,7 +11,14 @@ export DEBIAN_FRONTEND=noninteractive
 # Update and upgrade system
 apt -qq update -y 
 apt -qq update -y --fix-missing
-apt -qq upgrade -y 
+apt -qq upgrade -y
+
+# Fix some dependencies
+apt --fix-broken install
+
+# Autoremove and autoclean
+apt autoremove -y
+apt autoclean -y
 
 # Install and run docker
 apt install -y docker.io
@@ -40,14 +47,6 @@ wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 apt update -y 
 apt install -y sublime-text
-
-# Install atom
-wget -O /tmp/atom-amd64.deb https://github.com/atom/atom/releases/download/v1.49.0/atom-amd64.deb
-dpkg -i /tmp/atom-amd64.deb
-rm -f /tmp/atom-amd64.deb
-
-# Fix some dependencies
-apt --fix-broken install
 
 # Install jq 
 apt install -y jq
@@ -96,6 +95,9 @@ for ff_profile in $ff_profiles; do
     echo "user_pref(\"signon.rememberSignons\", false);" >> "$cf_home/.mozilla/firefox/$ff_profile/user.js"
     echo "user_pref(\"browser.startup.homepage\", \"localhost:8000\");" >> "$cf_home/.mozilla/firefox/$ff_profile/user.js"
 done
+
+# Install other things
+apt install gobuster -y
 
 # Clean up
 apt autoremove -y 
