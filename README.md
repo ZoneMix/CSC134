@@ -67,7 +67,7 @@ Once the github repository is finished cloning we will need run the install scri
 
 ```bash
 chmod u+x ./kali.sh
-sudo ./kali.sh
+sudo nohup ./kali.sh
 ```
 
 ## Errors and Troubleshooting
