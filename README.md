@@ -64,3 +64,8 @@ cd CSC134
 ```
 
 Once the github repository is finished cloning we will need run the install script which will take a while...
+
+```bash
+chmod u+x ./install.sh
+sudo ./install.sh
+```
